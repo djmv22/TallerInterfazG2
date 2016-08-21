@@ -5,6 +5,9 @@
  */
 package ejercicio;
 
+import java.awt.image.ImageObserver;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DanielDeJesus
@@ -30,54 +33,81 @@ public class Interfaz2 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSueldoBase = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtNumeroHijos = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtBonificacionHijos = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtMontoFinal = new javax.swing.JTextField();
+        cmdCalcular = new javax.swing.JButton();
+        cmdBorrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         jLabel1.setText("Ejercicio Número 2: Calcular monto de bonificacion y monto final");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 310, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 340, 40));
 
         jLabel2.setText("Sueldo base:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 90, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        txtSueldoBase.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSueldoBaseKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtSueldoBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 90, -1));
 
         jLabel3.setText("Nº de hijos:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroHijos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtNumeroHijosActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 60, -1));
+        txtNumeroHijos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroHijosKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtNumeroHijos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 60, -1));
 
         jLabel4.setText("Bonificacion por Nº de hijos:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
 
-        jTextField3.setEditable(false);
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 100, -1));
+        txtBonificacionHijos.setEditable(false);
+        txtBonificacionHijos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBonificacionHijosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtBonificacionHijos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 100, -1));
 
         jLabel5.setText("Monto total a pagar:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
 
-        jTextField4.setEditable(false);
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 100, -1));
+        txtMontoFinal.setEditable(false);
+        jPanel1.add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 100, -1));
 
-        jButton1.setText("Calcular");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
 
-        jButton2.setText("Borrar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
+        cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,9 +123,73 @@ public class Interfaz2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtNumeroHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroHijosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtNumeroHijosActionPerformed
+
+    private void txtBonificacionHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBonificacionHijosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBonificacionHijosActionPerformed
+
+    private void txtSueldoBaseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoBaseKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();
+          }
+    }//GEN-LAST:event_txtSueldoBaseKeyTyped
+
+    private void txtNumeroHijosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroHijosKeyTyped
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();
+          }
+    }//GEN-LAST:event_txtNumeroHijosKeyTyped
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String res1, res2;
+        double sueldoB,nHijos,opH, opF;
+        
+        if(txtSueldoBase.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Digite el sueldo base","error", JOptionPane.ERROR_MESSAGE);
+            txtSueldoBase.requestFocusInWindow();
+        }
+        else if(txtNumeroHijos.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Digite el Nº de hijos","error", JOptionPane.ERROR_MESSAGE);
+            txtNumeroHijos.requestFocusInWindow();
+        }
+        else{
+        sueldoB = Double.parseDouble(txtSueldoBase.getText());
+        nHijos = Double.parseDouble(txtNumeroHijos.getText());
+        
+        opH = nHijos * 80000;
+        opF = sueldoB + opH;
+        
+        res1 = String.valueOf(opH);
+        res2 = String.valueOf(opF);
+        
+        txtBonificacionHijos.setText(res1);
+        txtMontoFinal.setText(res2);
+        }
+        
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        txtSueldoBase.setText("");
+        txtNumeroHijos.setText("");
+        txtBonificacionHijos.setText("");
+        txtMontoFinal.setText("");
+        
+        txtSueldoBase.requestFocusInWindow();
+        
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,17 +227,17 @@ public class Interfaz2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdCalcular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtBonificacionHijos;
+    private javax.swing.JTextField txtMontoFinal;
+    private javax.swing.JTextField txtNumeroHijos;
+    private javax.swing.JTextField txtSueldoBase;
     // End of variables declaration//GEN-END:variables
 }
